@@ -4,4 +4,4 @@ __pycache__
 *.pyd
 .env
 env
-test_db.db
+.db
