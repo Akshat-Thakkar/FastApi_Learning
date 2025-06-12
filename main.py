@@ -1,6 +1,11 @@
 from fastapi import FastAPI
+from core.config import settings 
 
-app = FastAPI(title="My FastAPI Application",version="0.1.0")
+def start_application():
+    app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
+    return app
+
+app = start_application()
 
 @app.get("/")
 def hello():
