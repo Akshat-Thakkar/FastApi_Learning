@@ -5,3 +5,7 @@ SQLAlchemy==2.0.13
 psycopg2==2.9.6
 
 alembic==1.11.1
+
+pydantic['email']
+
+passlib==1.7.4
