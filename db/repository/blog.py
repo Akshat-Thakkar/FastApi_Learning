@@ -4,6 +4,7 @@ from db.models.blog import Blog
 
 def create_new_blog(blog: CreateBlog, db: Session, author_id: int):
    blog = Blog(
+       id=blog.id,
       title=blog.title,
       slug=blog.slug,
       content=blog.content,

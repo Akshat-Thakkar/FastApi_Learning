@@ -3,10 +3,10 @@ from pydantic import BaseModel,root_validator
 from datetime import datetime
 
 class CreateBlog(BaseModel):
+    id: int
     title: str
     slug: str
     content: Optional[str] = None
-    published: bool = True
     created_at: datetime = datetime.now()
 
     @root_validator(pre=True)
@@ -22,7 +22,7 @@ class ShowBlog(BaseModel):
     created_at: datetime = datetime.now()
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class UpdateBlog(CreateBlog):
