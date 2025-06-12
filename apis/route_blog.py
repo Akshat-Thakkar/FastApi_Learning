@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, status,HTTPException
 from sqlalchemy.orm import Session
 from schemas.blog import CreateBlog, ShowBlog, UpdateBlog
 from db.session import get_db
-from db.repository.blog import create_new_blog, retrieve_blog, retrieve_active_blog, update_blog_by_id,delete_blog_by_ID
+from db.repository.blog import create_new_blog, retrieve_blog, update_blog_by_id,delete_blog_by_ID
 from typing import List
 
 
@@ -30,13 +30,6 @@ def get_blog(blog_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Blog with this ID not found")
     return blog
 
-
-@router.get("/blogs/active", response_model=List[ShowBlog])
-def get_active_blogs(db: Session = Depends(get_db)):
-    blogs = retrieve_active_blog(db=db)
-    if not blogs:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No active blogs found")
-    return blogs
 
 @router.delete("/blogs/{id}")
 def delete_blog(id: int, db: Session = Depends(get_db)):

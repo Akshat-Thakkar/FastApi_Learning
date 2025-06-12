@@ -21,8 +21,6 @@ def retrieve_blog(id: int , db: Session ) :
     blog =db.query(Blog).filter(Blog.id == id).first()
     return  blog
 
-def retrieve_active_blog(db: Session):
-    return db.query(Blog).filter(Blog.is_active == True).all()
 
 def update_blog_by_id(id: int, blog: UpdateBlog, db: Session, author_id: int = 1):
     existing_blog = db.query(Blog).filter(Blog.id == id).first()
