@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Blog Home</title>
+{% endblock %}
+
+{% block content %}
+
+{% with alert=alert %}
+    {% include "components/alert.html" %}
+{% endwith %}
+
+<div class="container">
+    <div class="jumbotron mt-4">
+        <h1 class="display-4">Welcome to the Blog Home Page</h1>
+        <p class="lead">Here you can find all the latest blog posts.</p>
+        <hr class="my-4">
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-muted">All Blogs</h2>
+ 
+    {% if blogs %}
+        <p>Found {{ blogs|length }} blogs.</p>
+        <div class="row justify-content-center">
+            {% for blog in blogs %}
+            <div class="col-sm-4 mb-4">
+                <div class="card-header">
+                    <h5 class="card-text">{{ blog.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">First Published: {{ blog.created_at.strftime('%Y-%m-%d') }}</p>
+                    <small class="card-text text-muted">Content: {{ blog.content[:60] }}...</small>
+                    <br>
+                    <a href="/app/blogs/{{ blog.id }}" class="btn btn-outline-success">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No blogs available.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    console.log("Blog Home Page");
+  </script>
+{% endblock %}
