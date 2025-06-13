@@ -19,21 +19,44 @@ A full-featured backend application built using **FastAPI**, designed for managi
 ## 📁 Project Structure
 
 ```
-FastApi/
+FastApi_Learning/
 │
-├── apis/                   # API route definitions
-│   └── v1/                 # Versioned API routing
-├── core/                   # Settings and configurations
-├── db/                     # Database setup, models, base
-├── schemas/                # Pydantic models
-├── tests/                  # Pytest test cases
-├── main.py                 # App entrypoint
-├── alembic/                # Alembic migration folder
-├── alembic.ini             # Alembic config
-└── README.md               # You're here!
+├── alembic/                 # Alembic migration folder
+│   ├── README
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions/            # Alembic migration scripts
+├── apis/                    # API route definitions
+│   ├── base.py
+│   ├── route_blog.py
+│   ├── route_login.py
+│   └── route_user.py
+├── app/                     # (Optional) Additional app logic/routes/templates
+│   ├── base.py
+│   ├── route_blog.py
+│   ├── route_login.py
+│   ├── static/              # Static files (css, js, images)
+│   └── templates/           # Jinja2 or other templates
+├── core/                    # Settings and core logic
+│   ├── config.py
+│   ├── hashing.py
+│   └── security.py
+├── db/                      # Database setup, models, repository
+│   ├── base.py
+│   ├── base_class.py
+│   ├── models/              # SQLAlchemy models
+│   ├── repository/          # Data access layer
+│   └── session.py
+├── schemas/                 # (No files listed; for Pydantic models)
+├── tests/                   # Test cases
+│   ├── conftest.py
+│   └── test_routs/          # Test modules
+├── alembic.ini              # Alembic config
+├── main.py                  # App entrypoint
+├── readme.md                # Project documentation
+├── requirements.txt         # Python dependencies
+└── sqlapp.db                # SQLite database (for development)
 ```
-
----
 
 ## 🚀 Getting Started
 
